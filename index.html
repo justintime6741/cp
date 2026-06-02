@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry ❤️</title>
+    <style>
+        /* General page styling */
+        body {
+            background-color: #ffe6ea; /* Light pastel pink */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars when the button runs away */
+        }
 
+        h1 {
+            color: #d6336c; /* Deep pink text */
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #a61e4d;
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+
+        .hearts {
+            font-size: 2.5em;
+            margin: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Pulsing animation for the hearts */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        /* The 'Yes' Button */
+        #btnYes {
+            background-color: #ff758f;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 117, 143, 0.4);
+        }
+
+        #btnYes:hover {
+            background-color: #ff4d6d;
+            transform: scale(1.05);
+        }
+
+        /* The 'No' Button */
+        #btnNo {
+            background-color: #f8f9fa;
+            color: #495057;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative; /* Starts off normal */
+        }
+
+        /* Hidden success message */
+        #successMessage {
+            display: none;
+            margin-top: 30px;
+            font-size: 2.5em;
+            color: #d6336c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>I'm so sorry! 🥺</h1>
+    <p>I love you so, so much.</p>
+    <div class="hearts">💖💕💘💗💓💞💝</div>
+    
+    <p>Do you still love me?</p>
+
+    <div class="btn-container" id="buttons">
+        <button id="btnYes" onclick="sayYes()">Yes!</button>
+        <button id="btnNo" onmouseover="moveNo()">No</button>
+    </div>
+
+    <div id="successMessage">
+        I knew it! I love you more! 🥰❤️❤️❤️
+    </div>
+
+    <script>
+        // Function to make the 'No' button run away
+        function moveNo() {
+            const btn = document.getElementById('btnNo');
+            
+            // Get the window's width and height, minus the button's size so it doesn't go off-screen
+            const maxX = window.innerWidth - btn.clientWidth - 20;
+            const maxY = window.innerHeight - btn.clientHeight - 20;
+
+            // Generate random coordinates
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            // Change the button to fixed positioning so it can float anywhere on the screen
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        // Function for when she clicks 'Yes'
+        function sayYes() {
+            // Hide the buttons
+            document.getElementById('buttons').style.display = 'none';
+            // Show the cute success message
+            document.getElementById('successMessage').style.display = 'block';
+            // Throw some extra hearts on the screen
+            document.querySelector('.hearts').innerHTML = '❤️❤️❤️❤️❤️❤️❤️❤️❤️';
+        }
+    </script>
+
+</body>
+</html>
