@@ -61,12 +61,12 @@
             justify-content: center;
         }
 
-        button {
+        /* Shared styles for both the real button and the fake button div */
+        #btnYes, #btnNo {
             font-size: 1.5em;
             padding: 15px 40px;
             border: none;
             border-radius: 30px;
-            cursor: pointer;
             font-weight: bold;
             transition: background-color 0.2s, transform 0.1s;
         }
@@ -75,6 +75,7 @@
             background-color: #ff758f;
             color: white;
             box-shadow: 0 5px 15px rgba(255, 117, 143, 0.4);
+            cursor: pointer;
         }
 
         #btnYes:hover {
@@ -82,11 +83,15 @@
             transform: scale(1.05);
         }
 
+        /* Styling for the fake 'No' button */
         #btnNo {
             background-color: #f8f9fa;
             color: #495057;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
+            display: inline-block;
+            cursor: default;
+            user-select: none; /* Prevents her from accidentally highlighting the text while chasing it */
         }
 
         #btnVideo {
@@ -97,6 +102,10 @@
             font-size: 1.2em;
             padding: 10px 25px;
             box-shadow: 0 5px 12px rgba(116, 192, 252, 0.4);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         #btnVideo:hover {
@@ -177,7 +186,7 @@
             <p>Do you still love me?</p>
             <div class="btn-container" id="buttons">
                 <button id="btnYes" onclick="sayYes()">Yes!</button>
-                <button id="btnNo" onmouseover="moveNo()">No</button>
+                <div id="btnNo" onmouseover="moveNo()">No</div>
             </div>
         </div>
 
@@ -187,7 +196,7 @@
 
         <div id="timer"></div>
 
-        <button id="btnVideo" onclick="showVideo()">Watch This 🎬</button>
+        <button id="btnVideo" onclick="showVideo()">Watch Our Video 🎬</button>
         <div id="videoWrapper">
             <video id="myVideo" width="320" height="240" controls>
                 <source src="041025.mp4" type="video/mp4">
